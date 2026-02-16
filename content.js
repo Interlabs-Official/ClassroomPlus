@@ -1,11 +1,26 @@
+import yaml from "js-yaml";
+
 async function loadContent(path) {
     const response = await fetch(chrome.runtime.getURL(path));
     return await response.text();
 }
 
 async function loadMappings() {
-    const temp = await loadContent("themes/dark.css");
+    var temp = await loadContent("themes/dark.css");
+    const mappings = yaml.load(await loadContent("mappings.yml"));
+    for (const item in mappings) {
+        console.log(temp);
+        const entry = mappings[item];
+        const thing = entry?.any?.[0];
+        temp = temp.replace(":" + item, thing);
+        console.log(temp);
+    }
+    console.log(mappings);
     const style = document.createElement("style");
     style.textContent = temp;
+    style.id = "teststyle"
     document.head.appendChild(style);
+    console.log(temp);
 }
+
+loadMappings();

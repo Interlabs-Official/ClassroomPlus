@@ -8,5 +8,11 @@
             "matches": ["https://classroom.google.com/*"],
             "js": ["content.js"]
         }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["mappings.yml", "themes/*"],
+            "matches": ["https://classroom.google.com/*"]
+        }
     ]
 }
