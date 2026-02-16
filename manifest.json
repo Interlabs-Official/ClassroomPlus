@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Classroom+",
+    "version": "1.0.0",
+    "description": "Extends the functionality of Google Classroom as a Chrome extension",
+    "content_scripts": [
+        {
+            "matches": ["https://classroom.google.com/*"],
+            "js": ["content.js"]
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "classroomplus",
+  "version": "1.0.0",
+  "description": "Extends the functionality of Google Classroom as a Chrome extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Interlabs-Official/ClassroomPlus.git"
+  },
+  "keywords": [],
+  "author": "solarcosmic",
+  "license": "AGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/Interlabs-Official/ClassroomPlus/issues"
+  },
+  "homepage": "https://github.com/Interlabs-Official/ClassroomPlus#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^13.0.1",
+    "webpack": "^5.105.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.3"
+  }
+}
