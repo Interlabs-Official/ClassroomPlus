@@ -17,9 +17,12 @@
 */
 
 /* themes/dark.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-body {
-    color: white !important;
+:selector/everythingExceptSymbols {
+    font-family: 'Open Sans', sans-serif !important;
+    /*color: white !important;*/
 }
 
 :courseCard {
@@ -53,5 +56,28 @@ body {
 }
 
 :genericIcon {
+    color: white;
+}
+
+:backgroundStream {
+    color: white;
+    background-color: black;
+}
+
+:streamNavbar, :streamNavbarText {
+    color: white;
+    background-color: black;
+}
+
+:streamElement, :complementaryStreamElement {
+    color: white;
+    background-color: black;
+}
+
+:newAnnouncementButton {
+    background-color: #000000;
+}
+
+:newAnnouncementButton_text {
     color: white;
 }

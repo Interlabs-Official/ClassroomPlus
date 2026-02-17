@@ -32,6 +32,11 @@ background:
   any:
     - 'body, div[jscontroller] > ol'
 
+# The background of a class's main stream
+backgroundStream:
+  any:
+    - 'c-wiz[data-include-user-lists] > div[jsname]'
+
 # The sidebar on the left of Google Classroom
 sidebar:
   any:
@@ -57,3 +62,37 @@ topbar:
 genericIcon:
   any:
     - 'svg, svg[class][focusable][viewBox], button[jscontroller][aria-haspopup="menu"]'
+
+streamNavbar:
+  any:
+    - 'nav > div[jscontroller][jsaction] > div'
+
+streamNavbarText:
+  any:
+    - 'div[data-impressions-entry-point] > div[role="listitem"] > a[href]'
+
+streamElement:
+  any:
+    - 'div[data-include-stream-item-materials][data-stream-item-id]'
+
+complementaryStreamElement:
+  any:
+    - 'aside[role="complementary"] div:has(> div[jscontroller][jsaction])'
+
+newAnnouncementButton:
+  any:
+    - 'div[data-is-touch-wrapper] > button[data-idom-class]'
+
+newAnnouncementButton_text:
+  any:
+    - 'div[data-is-touch-wrapper] > button[data-idom-class] > span[jsname]'
+
+#
+# Selectors
+# Selectors are essentially helpers, for example 'selector/everythingExceptSymbols'
+# selects everything that isn't Google-defined symbols. Useful for fonts.
+#
+
+selector/everythingExceptSymbols:
+  any:
+    - '*:not(.google-symbols)'
