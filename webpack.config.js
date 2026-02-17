@@ -20,11 +20,8 @@ module.exports = (env, argv) => ({
       patterns: [
         { from: 'manifest.json', to: '.' },
         { from: 'mappings.yml', to: '.' },
-        { from: 'pyodide.html', to: '.' },
         { from: 'background.js', to: '.' },
         { from: 'themes', to: 'themes' },
-        { from: 'pyodide', to: 'pyodide' },
-        { from: 'pyodideld.js', to: '.' },
       ]
     }),
   ],

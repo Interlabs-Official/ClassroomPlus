@@ -11,7 +11,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["mappings.yml", "themes/*", "pyodide.html", "pyodide/*", "pyodideld.js"],
+            "resources": ["mappings.yml", "themes/*"],
             "matches": ["https://classroom.google.com/*"]
         }
     ],
