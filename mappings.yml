@@ -51,6 +51,10 @@ sidebarItem:
   any:
     - 'div[data-impressions-entry-point] > a[aria-label]'
 
+sidebarGroupItemBackground:
+  any:
+    - 'div[role="group"] > a[aria-label]:first_child'
+
 sidebarItemText:
   any:
     - 'a[aria-current] > div > div'

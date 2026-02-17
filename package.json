@@ -29,6 +29,8 @@
     "webpack-dev-server": "^5.2.3"
   },
   "dependencies": {
-    "js-yaml": "^4.1.1"
+    "js-yaml": "^4.1.1",
+    "lua-in-js": "^2.2.5",
+    "luaparse": "^0.3.1"
   }
 }

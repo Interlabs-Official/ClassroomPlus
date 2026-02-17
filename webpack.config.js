@@ -22,12 +22,13 @@ module.exports = (env, argv) => ({
         { from: 'mappings.yml', to: '.' },
         { from: 'background.js', to: '.' },
         { from: 'themes', to: 'themes' },
+        { from: 'src', to: 'src' }
       ]
     }),
   ],
 
   resolve: {
-    extensions: ['.js', '.json'],
+    extensions: ['.js', '.json', '.lua'],
     fallback: {
       "path": false,
       "fs": false
@@ -45,6 +46,14 @@ module.exports = (env, argv) => ({
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.lua$/,
+        use: [
+          {
+            loader: path.resolve(__dirname, 'lua_loader.js')
+          }
+        ]
       }
     ]
   },

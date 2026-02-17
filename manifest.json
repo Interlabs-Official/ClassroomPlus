@@ -11,7 +11,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["mappings.yml", "themes/*"],
+            "resources": ["mappings.yml", "themes/*", "src/*"],
             "matches": ["https://classroom.google.com/*"]
         }
     ],

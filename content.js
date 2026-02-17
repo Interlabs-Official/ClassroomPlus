@@ -1,4 +1,6 @@
 import yaml from "js-yaml";
+import mycode from './src/testing.lua';
+console.log(mycode);
 
 async function loadContent(path) {
     const response = await fetch(chrome.runtime.getURL(path));
@@ -6,6 +8,8 @@ async function loadContent(path) {
 }
 
 async function loadMappings() {
+    mycode.hr("https://google.com")
+    console.log(mycode.add(2,5));
     var temp = await loadContent("themes/dark.css");
     const mappings = yaml.load(await loadContent("mappings.yml"));
     for (const item in mappings) {
