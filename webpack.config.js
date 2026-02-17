@@ -28,7 +28,7 @@ module.exports = (env, argv) => ({
   ],
 
   resolve: {
-    extensions: ['.js', '.json', '.lua'],
+    extensions: ['.js', '.json'],
     fallback: {
       "path": false,
       "fs": false
@@ -46,14 +46,6 @@ module.exports = (env, argv) => ({
             presets: ['@babel/preset-env']
           }
         }
-      },
-      {
-        test: /\.lua$/,
-        use: [
-          {
-            loader: path.resolve(__dirname, 'lua_loader.js')
-          }
-        ]
       }
     ]
   },
