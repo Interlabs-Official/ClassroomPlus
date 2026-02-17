@@ -9,18 +9,19 @@ async function loadMappings() {
     var temp = await loadContent("themes/dark.css");
     const mappings = yaml.load(await loadContent("mappings.yml"));
     for (const item in mappings) {
-        console.log(temp);
+        //console.log(temp);
         const entry = mappings[item];
-        const thing = entry?.any?.[0];
-        temp = temp.replace(":" + item, thing);
-        console.log(temp);
+        for (const object in entry?.any) {
+            temp = temp.replace(":" + item, entry.any[object]);
+            //console.log(temp);
+        }
     }
-    console.log(mappings);
+    //console.log(mappings);
     const style = document.createElement("style");
     style.textContent = temp;
     style.id = "teststyle"
     document.head.appendChild(style);
-    console.log(temp);
+    //console.log(temp);
 }
 
 loadMappings();

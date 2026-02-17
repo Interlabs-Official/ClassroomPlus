@@ -1,3 +1,59 @@
+###########
+
+#   Classroom+ for Chrome & Firefox
+#   Copyright (C) 2026 InterLabs
+
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU Affero General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU Affero General Public License for more details.
+
+#   You should have received a copy of the GNU Affero General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+###########
+# mappings.yml #
+
+# List of mappings to be used in themes. They may be used as you would usually use a pseudo-class in CSS.
+# For example, instead of using .a1b2c3 {}, you can use :courseCard {}.
+
+# The course cards on the main homepage of Google Classroom
 courseCard:
   any:
     - 'ol > li[data-draggable-item-id]'
+
+# The general background of Google Classroom
+background:
+  any:
+    - 'body, div[jscontroller] > ol'
+
+# The sidebar on the left of Google Classroom
+sidebar:
+  any:
+    - 'div[jscontroller] > div[data-impressions-entry-point]'
+
+# For items within a group, e.g. Enrolled
+sidebarGroupItem:
+  any:
+    - 'div[role="group"] > a[aria-label]'
+
+sidebarItem:
+  any:
+    - 'div[data-impressions-entry-point] > a[aria-label]'
+
+sidebarItemText:
+  any:
+    - 'a[aria-current] > div > div'
+
+topbar:
+  any:
+    - 'nav[jscontroller][jsaction]'
+
+genericIcon:
+  any:
+    - 'svg, svg[class][focusable][viewBox], button[jscontroller][aria-haspopup="menu"]'
