@@ -7,11 +7,17 @@ module.exports = (env, argv) => ({
 
   entry: {
     content: './content.js',
+    settings: './settings/script.js'
   },
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: (pathData) => {
+      if (pathData.chunk.name === 'settings') {
+        return 'settings/script.js';
+      }
+      return '[name].js';
+    },
     clean: true
   },
 
@@ -22,7 +28,7 @@ module.exports = (env, argv) => ({
         { from: 'mappings.yml', to: '.' },
         { from: 'background.js', to: '.' },
         { from: 'themes', to: 'themes' },
-        //{ from: 'src', to: 'src' },
+        { from: 'src', to: 'src' },
         { from: 'settings', to: 'settings' },
       ]
     }),

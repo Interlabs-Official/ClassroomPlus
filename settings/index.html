@@ -16,7 +16,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 20px;
+            /*padding: 10px;*/
         }
         .card {
             width: 300px;
@@ -57,6 +57,42 @@
         .card-apply:hover {
             background-color: #28a2ff;
         }
+        #repository-list {
+            margin: 10px;
+        }
+        .repository-list-item {
+            width: 97.5%;
+            background-color: #0f0f0f;
+            box-shadow: 2px 3px #000000;
+            text-shadow: 2px 3px #000000;
+            border-radius: 4px;
+            padding: 12px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .repo-authors {
+            color: rgb(174, 174, 174);
+        }
+
+        /* Credit: Google Gemini */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #content div {
+            animation-name: fadeInUp;
+            animation-duration: 0.2s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+        }
     </style>
 </head>
 <body>
@@ -85,7 +121,13 @@
             </div>
         </div>
         <div id="repositories">
-            <p>No repositories to show.</p>
+            <!--<p>No repositories to show.</p>-->
+            <div id="repository-list">
+                <div class="repository-list-item">
+                    <span class="repo-name">Classroom+ Official Repository</span>
+                    <span class="repo-authors">by solarcosmic, Convy32</span>
+                </div>
+            </div>
             <button id="manage-repo">+ Add Repository</button>
         </div>
     </div>

@@ -11,7 +11,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["mappings.yml", "themes/*", "src/*", "settings/*"],
+            "resources": ["mappings.yml", "themes/*", "src/*", "settings/*", "src/modules/*"],
             "matches": ["https://classroom.google.com/*"]
         }
     ],
@@ -19,7 +19,8 @@
         "service_worker": "background.js"
     },
     "permissions": [
-        "tabs"
+        "tabs",
+        "storage"
     ],
     "content_security_policy": {
         "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"

@@ -5,8 +5,21 @@ async function loadContent(path) {
     return await response.text();
 }
 
-async function loadMappings() {
-    var temp = await loadContent("themes/dark.css");
+async function loopThemeList() {
+    const themeFile = await loadContent("src/modules/themes.yml");
+    const themeList = yaml.load(themeFile);
+    chrome.storage.sync.get(["activeThemeId"]).then(async (result) => {
+        for (const object in themeList) {
+            if (result.activeThemeId == object) {
+                const obj = themeList[object];
+                loadMappings("themes/" + obj.css);
+            };
+        }
+    });
+}
+
+async function loadMappings(theme) {
+    var temp = await loadContent(theme);
     const mappings = yaml.load(await loadContent("mappings.yml"));
     for (const item in mappings) {
         //console.log(temp);
@@ -23,5 +36,6 @@ async function loadMappings() {
     document.head.appendChild(style);
     //console.log(temp);
 }
+loopThemeList();
 
-loadMappings();
+//loadMappings();

@@ -6,6 +6,7 @@
     toggle.appendChild(title);
     document.getElementById("toggles").appendChild(toggle);
 });*/
+import yaml from "js-yaml";
 function createThemeCard(theme) {
     const card = createAndAssignClass("div", "card");
     const thumbnail = createAndAssignClass("img", "card-image");
@@ -21,7 +22,7 @@ function createThemeCard(theme) {
     apply_button.textContent = "Apply";
     
     apply_button.addEventListener("click", () => {
-        console.log("Theme clicked: " + theme.title);
+        applyTheme(theme.id, apply_button);
     });
 
     card_title_row.appendChild(header);
@@ -46,9 +47,10 @@ function createAndAssignClass(elementType, className) {
     return element;
 };
 
-function createThemeLink(name, summary, image, authors) {
+function createThemeLink(name, summary, image, authors, id) {
     const theme = {
         name: name,
+        id: id || crypto.randomUUID(),
         //description: description,
         summary: summary,
         thumbnail: image,
@@ -79,5 +81,30 @@ function registerTabButtons() {
 };
 registerTabButtons();
 
-createThemeLink("Space Theme", "The classic Space Theme, built for Google Classroom!", "space.jpg", "solarcosmic");
-createThemeLink("Testing Theme", "This is a testing theme!", "space.jpg", "solarcosmic");
+function applyTheme(themeId, applyButton) {
+    chrome.storage.sync.set({activeThemeId: themeId}).then(() => {
+        console.log("Theme applied:", themeId);
+        if (applyButton) {
+            applyButton.textContent = "✓";
+            applyButton.style.backgroundColor = "green";
+        }
+    });
+};
+
+async function loadContent(path) {
+    const response = await fetch(chrome.runtime.getURL(path));
+    return await response.text();
+}
+
+async function loopThemeList() {
+    const themeFile = await loadContent("../src/modules/themes.yml");
+    const themeList = yaml.load(themeFile);
+    for (const object in themeList) {
+        const obj = themeList[object];
+        createThemeLink(obj.name, obj.summary, obj.thumbnail, obj.authors, object);
+    }
+};
+loopThemeList();
+
+//createThemeLink("Space Theme", "The classic Space Theme, built for Google Classroom!", "space.jpg", "solarcosmic");
+//createThemeLink("Testing Theme", "This is a testing theme!", "space.jpg", "solarcosmic");
