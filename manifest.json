@@ -11,7 +11,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["mappings.yml", "themes/*", "src/*"],
+            "resources": ["mappings.yml", "themes/*", "src/*", "settings/*"],
             "matches": ["https://classroom.google.com/*"]
         }
     ],
@@ -23,5 +23,8 @@
     ],
     "content_security_policy": {
         "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+    },
+    "action": {
+        "default_title": "Classroom+"
     }
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+        * {
+            font-family: 'Golos Text', sans-serif;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            width: 300px;
+            overflow: hidden;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            border-radius: 8px;
+        }
+        .card-image {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding-top: 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-bottom: 12px;
+        }
+        .title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .title-row h3 { margin: 0; text-shadow: 2px 3px #000000; }
+        .card-apply {
+            border-radius: 2px;
+            padding: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
+            border: none;
+            color: #ffffff;
+            background-color: #0091ff;
+            box-shadow: 2px 3px #000000;
+            cursor: pointer;
+        }
+        .card-apply:hover {
+            background-color: #28a2ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Settings.</h1>
+    <button id="manage-repo">+ Add Repository</button>
+    <div id="toggles"></div>
+    <div id="theme-container">
+        <!--
+        <div class="card">
+            <img src="space.jpg" class="card-image"></img>
+            <div class="card-content">
+                <div class="title-row">
+                    <h3>Space Theme</h3>
+                    <button id="apply-button">Apply</button>
+                </div>
+                <p>The classic Space Theme, built for Google Classroom!</p>
+            </div>
+        </div>
+        -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

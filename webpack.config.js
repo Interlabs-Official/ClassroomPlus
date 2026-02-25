@@ -22,7 +22,8 @@ module.exports = (env, argv) => ({
         { from: 'mappings.yml', to: '.' },
         { from: 'background.js', to: '.' },
         { from: 'themes', to: 'themes' },
-        { from: 'src', to: 'src' }
+        //{ from: 'src', to: 'src' },
+        { from: 'settings', to: 'settings' },
       ]
     }),
   ],
