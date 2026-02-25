@@ -53,10 +53,31 @@ function createThemeLink(name, summary, image, authors) {
         summary: summary,
         thumbnail: image,
         authors: authors,
-        linkedRepositories: []
+        linkedRepositories: ["Classroom+ Official Repository"]
     };
     createThemeCard(theme);
-}
+};
+
+function activateTab(id) {
+    for (const item of document.getElementById("content").children) {
+        item.style.display = "none";
+    };
+    document.getElementById(id).style.display = "block";
+};
+activateTab("themes");
+
+function registerTabButtons() {
+    for (const item of document.getElementById("sidebar").children) {
+        if (item instanceof HTMLButtonElement) {
+            const linkedTab = item.getAttribute("tab");
+            if (!linkedTab) continue;
+            item.addEventListener("click", () => {
+                activateTab(linkedTab);
+            })
+        }
+    };
+};
+registerTabButtons();
 
 createThemeLink("Space Theme", "The classic Space Theme, built for Google Classroom!", "space.jpg", "solarcosmic");
 createThemeLink("Testing Theme", "This is a testing theme!", "space.jpg", "solarcosmic");
