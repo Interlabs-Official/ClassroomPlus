@@ -23,8 +23,8 @@
 # For example, instead of using .a1b2c3 {}, you can use :courseCard {}.
 
 # The course cards on the main homepage of Google Classroom
-courseCard:
-  any:
+course:
+  card:
     - 'ol > li[data-draggable-item-id]'
 
 # The general background of Google Classroom
@@ -39,24 +39,13 @@ backgroundStream:
 
 # The sidebar on the left of Google Classroom
 sidebar:
-  any:
-    - 'div[jscontroller] > div[data-impressions-entry-point]'
-
-# For items within a group, e.g. Enrolled
-sidebarGroupItem:
-  any:
+  groupItem:
     - 'div[role="group"] > a[aria-label]'
-
-sidebarItem:
-  any:
-    - 'div[data-impressions-entry-point] > a[aria-label]'
-
-sidebarGroupItemBackground:
-  any:
+  groupItemBackground:
     - 'div[role="group"] > a[aria-label]:first_child'
-
-sidebarItemText:
-  any:
+  item:
+    - 'div[data-impressions-entry-point] > a[aria-label]'
+  itemText:
     - 'a[aria-current] > div > div'
 
 topbar:
@@ -67,28 +56,20 @@ genericIcon:
   any:
     - 'svg, svg[class][focusable][viewBox], button[jscontroller][aria-haspopup="menu"]'
 
-streamNavbar:
-  any:
+stream:
+  navbar:
     - 'nav > div[jscontroller][jsaction] > div'
-
-streamNavbarText:
-  any:
+  navbarText:
     - 'div[data-impressions-entry-point] > div[role="listitem"] > a[href]'
-
-streamElement:
-  any:
+  element:
     - 'div[data-include-stream-item-materials][data-stream-item-id]'
-
-complementaryStreamElement:
-  any:
+  complementaryElement:
     - 'aside[role="complementary"] div:has(> div[jscontroller][jsaction])'
 
 newAnnouncementButton:
   any:
     - 'div[data-is-touch-wrapper] > button[data-idom-class]'
-
-newAnnouncementButton_text:
-  any:
+  text:
     - 'div[data-is-touch-wrapper] > button[data-idom-class] > span[jsname]'
 
 #
@@ -97,6 +78,6 @@ newAnnouncementButton_text:
 # selects everything that isn't Google-defined symbols. Useful for fonts.
 #
 
-selector/everythingExceptSymbols:
-  any:
+selector:
+  everythingExceptSymbols:
     - '*:not(.google-symbols)'

@@ -22,9 +22,12 @@
 
 :selector/everythingExceptSymbols {
     font-family: 'Open Sans', sans-serif !important;
+    /*color: white !important;*/
 }
 
 :course/card {
+    background-color: #000000;
+    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -37,15 +40,19 @@
     background-color: #000000;
 }
 
-:sidebar/item, :sidebar/groupItem {
+:sidebar {
     background-color: #000000;
 }
 
-:sidebar/groupItemBackground {
+:sidebarItem, :sidebarGroupItem {
+    background-color: #000000;
+}
+
+:sidebarGroupItemBackground {
     border-radius: 0 !important;
 }
 
-:sidebar/itemText {
+:sidebarItemText {
     color: white;
 }
 
@@ -62,12 +69,12 @@
     background-color: black;
 }
 
-:stream/navbar, :stream/navbarText {
+:streamNavbar, :streamNavbarText {
     color: white;
     background-color: black;
 }
 
-:stream/element, :stream/complementaryElement {
+:streamElement, :complementaryStreamElement {
     color: white;
     background-color: black;
 }
@@ -76,6 +83,6 @@
     background-color: #000000;
 }
 
-:newAnnouncementButton/text {
+:newAnnouncementButton_text {
     color: white;
 }

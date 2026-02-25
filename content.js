@@ -18,24 +18,37 @@ async function loopThemeList() {
     });
 }
 
+// Credit: Claude Sonnet 4.6 (for new mappings system)
+function flattenMappings(obj, prefix = '') {
+    const result = {};
+    for (const key in obj) {
+        const value = obj[key];
+        const fullKey = prefix ? `${prefix}/${key}` : key;
+        if (Array.isArray(value)) {
+            result[fullKey] = value;
+        } else if (typeof value === 'object' && value !== null && !('any' in value)) {
+            Object.assign(result, flattenMappings(value, fullKey));
+        } else if (typeof value === 'object' && value !== null && 'any' in value) {
+            result[fullKey] = value.any;
+        }
+    }
+    return result;
+}
+
 async function loadMappings(theme) {
     var temp = await loadContent(theme);
     const mappings = yaml.load(await loadContent("mappings.yml"));
-    for (const item in mappings) {
-        //console.log(temp);
-        const entry = mappings[item];
-        for (const object in entry?.any) {
-            temp = temp.replace(":" + item, entry.any[object]);
-            //console.log(temp);
+    const flat = flattenMappings(mappings);
+    for (const key in flat) {
+        const selectors = flat[key];
+        for (const selector of selectors) {
+            temp = temp.replace(":" + key, selector);
         }
     }
-    //console.log(mappings);
+    console.log(temp);
     const style = document.createElement("style");
     style.textContent = temp;
     style.id = "teststyle"
     document.head.appendChild(style);
-    //console.log(temp);
 }
 loopThemeList();
-
-//loadMappings();
