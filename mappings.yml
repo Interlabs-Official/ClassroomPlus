@@ -72,6 +72,18 @@ newAnnouncementButton:
   text:
     - 'div[data-is-touch-wrapper] > button[data-idom-class] > span[jsname]'
 
+showHiddenClasses:
+  any:
+    - 'div[jsname][data-course-states="1"][data-course-visibility-settings]'
+
+generic:
+  topLeftCorner:
+    - 'div > svg[height="32"][width="32"] path[d="M 32,0 H -32,0 V 0,32 a 32, 32 0 0, 1 32,-32"]'
+
+attachmentItem:
+  any:
+    - 'div[jsaction*="click:"][data-attachment-id] > div > div'
+
 #
 # Selectors
 # Selectors are essentially helpers, for example 'selector/everythingExceptSymbols'
