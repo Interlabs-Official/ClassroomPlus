@@ -84,6 +84,15 @@ attachmentItem:
   any:
     - 'div[jsaction*="click:"][data-attachment-id] > div > div'
 
+headers:
+  generic:
+    - 'h1'
+    - 'h2'
+    - 'h3'
+    - 'h4'
+    - 'h5'
+    - 'span'
+
 #
 # Selectors
 # Selectors are essentially helpers, for example 'selector/everythingExceptSymbols'

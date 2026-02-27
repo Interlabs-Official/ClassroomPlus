@@ -42,7 +42,7 @@ async function loadMappings(theme) {
     for (const key in flat) {
         const selectors = flat[key];
         for (const selector of selectors) {
-            temp = temp.replace(":" + key, selector);
+            temp = temp.replace(":" + key, "/* Classroom+ Insert: " + key + " */ " + selector);
         }
     }
     console.log(temp);

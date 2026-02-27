@@ -41,6 +41,10 @@
     display: none;
 }
 
+:headers/generic {
+    color: #ffffff !important;
+}
+
 :background {
     background-color: #000000;
 }
