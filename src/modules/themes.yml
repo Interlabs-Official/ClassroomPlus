@@ -1,6 +1,6 @@
 67e0b942-a590-4aa2-8253-e619eba63eb6:
-  name: "Dark Theme"
+  name: "Pure Dark OLED"
   css: "dark.css"
-  summary: "The default, pure dark theme for Google Classroom!"
+  summary: "Google Classroom but pure dark. Designed for OLED devices."
   thumbnail: "pure-dark.png"
   authors: [solarcosmic]

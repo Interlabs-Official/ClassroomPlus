@@ -65,8 +65,58 @@ function activateTab(id) {
         item.style.display = "none";
     };
     document.getElementById(id).style.display = "block";
+    if (id == "repositories") {
+        chrome.storage.sync.get(["repositoryList"]).then(async (result) => {
+            if (!result.repositoryList) {
+                var repoList = {}
+                repoList["classroomplus.repo"] = {
+                    name: "Classroom+ Official Repository",
+                    authors: ["solarcosmic", "Convy32"],
+                    identifier: "classroomplus.repo", // may be redundant
+                    manifest_link: "https://interlabs-official.github.io/classroomplus-repo/manifest.yml"
+                };
+                chrome.storage.sync.set({repositoryList: JSON.stringify(repoList)});
+                activateTab("repositories");
+            }
+            var repoList;
+            try {
+                repoList = JSON.parse(result.repositoryList);
+            } catch (e) {
+                repoList = {};
+            };
+            document.getElementById("repository-list").innerHTML = "";
+            document.getElementById("no-repositories").style.display = "none";
+            console.log("Repo list:", repoList);
+            if (Object.keys(repoList).length == 0) {
+                console.log("testing")
+                document.getElementById("no-repositories").style.display = "block";
+                return;
+            } 
+            for (const item in repoList) {
+                if (repoList.hasOwnProperty(item)) {
+                    const repo = repoList[item];
+                    console.log("Repository:", repo);
+                    const list_item = createAndAssignClass("div", "repository-list-item");
+                    const repo_name = createAndAssignClass("span", "repo-name");
+                    const repo_authors = createAndAssignClass("span", "repo-authors");
+
+                    repo_name.textContent = repo.name;
+                    repo_authors.textContent = "by " + arrayToString(repo.authors);
+
+                    list_item.appendChild(repo_name);
+                    list_item.appendChild(repo_authors);
+                    document.getElementById("repository-list").appendChild(list_item);
+                }
+            }
+        });
+    }
 };
 activateTab("themes");
+
+// Credit: GPT-4.1 (this way is much more simple than what I had earlier)
+function arrayToString(arr) {
+    return Array.isArray(arr) ? arr.join(", ") : String(arr);
+}
 
 function registerTabButtons() {
     for (const item of document.getElementById("sidebar").children) {
@@ -90,6 +140,73 @@ function applyTheme(themeId, applyButton) {
         }
     });
 };
+
+async function addRepo() {
+    const url = prompt("Please enter the repository URL:") + "/manifest.yml";
+    //if (!url) return;
+    if (!isGitHubIOLink(url)) {
+        alert("Error adding repository:  Repository must be a github.io link");
+        return;
+    }
+    try {
+        const resp = await fetch(url);
+        if (!resp.ok) {
+            if (resp.status == 404) {
+                alert("Error adding repository: Could not find manifest.yml. Make sure there is a valid manifest.yml in the root folder of the repository.");
+            } else {
+                alert("Error adding repository: Response was not OK: " + resp.status);
+            }
+        }
+
+        const res = await resp.text();
+        const yml = yaml.load(res);
+        if (!yml.name || !yml.authors || !yml.identifier) { //  || !yml.themes || !yml.addons
+            alert("Error adding repository: manifest.yml has an invalid structure.\nIt is likely missing one of the following (or is corrupt):\n> name, authors, identifier, themes, addons\n\nIf you are the repository administrator, please update this accordingly.");
+        } else {
+            chrome.storage.sync.get(["repositoryList"]).then(async (result) => {
+                var repoList = {};
+                if (result.repositoryList) {
+                    try {
+                        repoList = JSON.parse(result.repositoryList);
+                        if (typeof repoList !== "object" || Array.isArray(repoList) || repoList === null) repoList = {};
+                    } catch (e) {
+                        repoList = {};
+                    }
+                };
+                if (repoList[yml.identifier] != null) {
+                    alert("Error adding repository: There is already a repository with the same identifier");
+                    return;
+                }
+                repoList[yml.identifier] = {
+                    name: yml.name,
+                    authors: yml.authors,
+                    identifier: yml.identifier, // may be redundant
+                    manifest_link: url
+                };
+                chrome.storage.sync.set({repositoryList: JSON.stringify(repoList)}).then(() => {
+                    alert("Repository added: " + yml.name);
+                });
+            });
+        }
+    } catch (e) {
+        alert("Error adding repository: " + e.message);
+    };
+    //alert("Error adding repository:  Repository must be a github.io link")
+    //alert("Error adding repository: Could not find manifest.yml OR manifest.yml has an invalid structure");
+    //const giveName = confirm("WARNING:  This repository is not on the trusted list, meaning it could contain addons that are malicious. By pressing OK, you agree to be careful and also agree that we (InterLabs) are not responsible for any damage occurred.");
+    //alert("Repository added.");
+};
+
+function isGitHubIOLink(str) {
+    try {
+        const url = new URL(str);
+        return url.hostname.endsWith("github.io");
+    } catch (error) { return false; }
+};
+
+document.getElementById("manage-repo").addEventListener("click", () => {
+    addRepo();
+})
 
 async function loadContent(path) {
     const response = await fetch(chrome.runtime.getURL(path));
