@@ -37,6 +37,14 @@
     background-color: #000000;
 }
 
+:assignmentDetails/commentHeader {
+    color: #ffffff !important;
+}
+
+div[data-stream-item-id] h2 + div span:nth-of-type(1) {
+    color: #ffffff !important;
+}
+
 :generic/topLeftCorner {
     display: none;
 }

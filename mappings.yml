@@ -84,6 +84,10 @@ attachmentItem:
   any:
     - 'div[jsaction*="click:"][data-attachment-id] > div > div'
 
+assignmentDetails:
+  commentHeader:
+    - "div[tabindex='-1'] span"
+
 headers:
   generic:
     - 'h1'
