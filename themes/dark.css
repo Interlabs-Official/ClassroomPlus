@@ -139,19 +139,47 @@ div[data-stream-item-id] h2 + div span:nth-of-type(1) {
     color: #ffffff !important;
 }
 
-div[jsaction][jscontroller][jsmodel] > div:nth-of-type(2) > span {
+:assignmentDetails/description {
     color: #ffffff;
 }
 
-a[target="_self"][href^="/c/"] > span:nth-of-type(1) { /* e.g. MUS1 */
+:topActionBar/className { /* e.g. MUS1 */
     color: #ffffff;
 }
 
-a[target="_self"][href^="/c/"] > span:nth-of-type(2) { /* e.g. Mr Teacher */
+:topActionBar/classSubName { /* e.g. Mr Teacher */
     color: #ffffff;
 }
 
 a[target="_self"][href="/h"] > span:nth-of-type(1) {
+    color: #ffffff;
+}
+
+:stream/upcomingHeader {
+    color: #ffffff;
+}
+
+:stream/upcomingDescription {
+    color: #ffffff;
+}
+
+:assignmentDetails/workLinks {
+    color: #0008ff;
+}
+
+:assignmentDetails/workInfo {
+    color: #ffffff;
+}
+
+:assignmentDetails/score {
+    color: #ffffff;
+}
+
+:assignmentPrivateComments/privateCommentsHeader {
+    color: #ffffff;
+}
+
+:assignmentDetails/teacherNameAndDate {
     color: #ffffff;
 }
 

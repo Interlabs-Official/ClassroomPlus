@@ -41,9 +41,11 @@ async function loadMappings(theme) {
     const flat = flattenMappings(mappings);
     for (const key in flat) {
         const selectors = flat[key];
-        for (const selector of selectors) {
-            temp = temp.replace(":" + key, "/* Classroom+ Insert: " + key + " */ " + selector);
-        }
+        const joinedSelectors = selectors.join(", ");
+        temp = temp.replace(":" + key, `/* Classroom+ Insert: ${key} */ ${joinedSelectors}`);
+        //for (const selector of selectors) {
+        //    temp = temp.replace(":" + key, "/* Classroom+ Insert: " + key + " */ " + selector);
+        //}
     }
     console.log(temp);
     const style = document.createElement("style");

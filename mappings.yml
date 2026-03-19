@@ -65,6 +65,10 @@ stream:
     - 'div[data-include-stream-item-materials][data-stream-item-id]'
   complementaryElement:
     - 'aside[role="complementary"] div:has(> div[jscontroller][jsaction])'
+  upcomingHeader:
+    - 'aside[role="complementary"] div:has(> div[jscontroller][jsaction]) > h2'
+  upcomingDescription:
+    - 'aside[role="complementary"] div:has(> div[jscontroller][jsaction]) > div > div > span'
 
 newAnnouncementButton:
   any:
@@ -87,6 +91,29 @@ attachmentItem:
 assignmentDetails:
   commentHeader:
     - "div[tabindex='-1'] span"
+  description:
+    - "div[jsaction][jscontroller][jsmodel] > div:nth-of-type(2) > span"
+  teacherNameAndDate:
+    - "div.rec5Nb > div" # TODO: find no classname for this
+  workLinks:
+    - "a > div:first-of-type > div:first-of-type" # TODO: fix super generic header
+  workInfo:
+    - "a > div:first-of-type > div:nth-of-type(2) > div > div" # TODO: fix super generic header
+  score:
+    - "div[aria-hidden='true']" # div[aria-hidden='true'] > span:last-child
+
+topActionBar:
+  className:
+    - 'a[target="_self"][href^="/c/"] > span:nth-of-type(1)'
+  classSubName:
+    - 'a[target="_self"][href^="/c/"] > span:nth-of-type(2)'
+  classroomHeader:
+    - 'a[target="_self"][href="/h"] > span:nth-of-type(1)'
+
+assignmentPrivateComments:
+  privateCommentsHeader:
+    - 'aside[role="complementary"] > div:nth-of-type(2) > div > div:nth-of-type(2) > div > span'
+    - 'div[guidedhelpid="submissionPrivateComments"] > div[jscontroller] > div:nth-of-type(2) > div > span:last-of-type'
 
 headers:
   generic:
