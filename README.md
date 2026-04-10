@@ -1,7 +1,9 @@
 <img width="1500" height="500" alt="classroomplus_banner1" src="https://github.com/user-attachments/assets/d600bb99-c7c6-48a2-8e3c-5c9cd005d30d" />
 
 <h1 align="center">ClassroomPlus</h1>
-<p align="center">Extends the functionality of Google Classroom as a Chrome extension!</p><hr>
+<p align="center">Extends the functionality of Google Classroom as a Chrome extension!</p>
+<p align="center">Demo video of install and overview: <a href="https://youtu.be/JOj1GHjPP3Y">https://youtu.be/JOj1GHjPP3Y</a></p>
+<hr>
 
 ## How to Install
 Go to the [releases](https://github.com/Interlabs-Official/ClassroomPlus/releases/) page to download the latest release. Make sure to download the zip binary that says `classroomplus-chrome.zip`.
