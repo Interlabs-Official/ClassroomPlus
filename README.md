@@ -1,3 +1,5 @@
+<img width="1500" height="500" alt="classroomplus_banner1" src="https://github.com/user-attachments/assets/d600bb99-c7c6-48a2-8e3c-5c9cd005d30d" />
+
 <h1 align="center">ClassroomPlus</h1>
 <p align="center">Extends the functionality of Google Classroom as a Chrome extension!</p><hr>
 
