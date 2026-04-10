@@ -34,6 +34,11 @@ npm -v
    # -> 9.2.0 (for example)
 ```
 
+Then install the npm dependencies:
+```bash
+npm i
+```
+
 To actively have Classroom+ refresh upon building (for developing) do:
 ```bash
 npm run dev
