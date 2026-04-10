@@ -140,7 +140,7 @@ div[data-stream-item-id] h2 + div span:nth-of-type(1) {
 }
 
 :assignmentDetails/description {
-    color: #ffffff;
+    color: #cbcbcb;
 }
 
 :topActionBar/className { /* e.g. MUS1 */
@@ -164,11 +164,12 @@ a[target="_self"][href="/h"] > span:nth-of-type(1) {
 }
 
 :assignmentDetails/workLinks {
-    color: #0008ff;
+    color: #00a6ff;
+    text-decoration: none;
 }
 
 :assignmentDetails/workInfo {
-    color: #ffffff;
+    color: #cbcbcb;
 }
 
 :assignmentDetails/score {
@@ -180,7 +181,11 @@ a[target="_self"][href="/h"] > span:nth-of-type(1) {
 }
 
 :assignmentDetails/teacherNameAndDate {
-    color: #ffffff;
+    color: #cbcbcb;
+}
+
+.g2MItd .bFjUmb-Wvd9Cc { /* no mappings for this yet */
+    background-color: #00a6ff;
 }
 
 div[role="dialog"] {
@@ -197,7 +202,7 @@ div[aria-label^="Topic "] h2 {
 }
 
 :headers/generic {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 :background {
