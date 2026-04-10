@@ -26,6 +26,11 @@
     "content_security_policy": {
         "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
     },
+    "icons": {
+        "16": "assets/classroomplus_icon16.png",
+        "48": "assets/classroomplus_icon48.png",
+        "128": "assets/classroomplus_icon128.png"
+    },
     "action": {
         "default_title": "Classroom+"
     }

@@ -30,6 +30,7 @@ module.exports = (env, argv) => ({
         { from: 'themes', to: 'themes' },
         { from: 'src', to: 'src' },
         { from: 'settings', to: 'settings' },
+        { from: 'assets', to: 'assets' },
       ]
     }),
   ],

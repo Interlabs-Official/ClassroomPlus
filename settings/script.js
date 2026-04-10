@@ -33,6 +33,7 @@ function createThemeCard(theme) {
     card.appendChild(card_content);
     document.getElementById("card-container").appendChild(card);
     console.log("Created theme card: ", theme.name, theme.summary, theme.image);
+    return card;
 };
 
 function createAndAssignId(elementType, id) {
@@ -57,15 +58,17 @@ function createThemeLink(name, summary, image, authors, id) {
         authors: authors,
         linkedRepositories: ["Classroom+ Official Repository"]
     };
-    createThemeCard(theme);
+    return createThemeCard(theme);
 };
 
 function activateTab(id) {
     for (const item of document.getElementById("content").children) {
         item.style.display = "none";
     };
+    if (id == "themes") document.title = "⚙ Themes (Settings) / Classroom+";
     document.getElementById(id).style.display = "block";
     if (id == "repositories") {
+        document.title = "⚙ Repositories (Settings) / Classroom+";
         chrome.storage.sync.get(["repositoryList"]).then(async (result) => {
             if (!result.repositoryList) {
                 var repoList = {}
@@ -140,6 +143,8 @@ function applyTheme(themeId, applyButton) {
         }
     });
 };
+
+
 
 async function addRepo() {
     const url = prompt("Please enter the repository URL:") + "/manifest.yml";
@@ -216,10 +221,21 @@ async function loadContent(path) {
 async function loopThemeList() {
     const themeFile = await loadContent("../src/modules/themes.yml");
     const themeList = yaml.load(themeFile);
-    for (const object in themeList) {
-        const obj = themeList[object];
-        createThemeLink(obj.name, obj.summary, obj.thumbnail, obj.authors, object);
-    }
+    chrome.storage.sync.get(["activeThemeId"]).then(async (result) => {
+        for (const object in themeList) {
+            const obj = themeList[object];
+            const themeCard = createThemeLink(obj.name, obj.summary, obj.thumbnail, obj.authors, object);
+            if (result.activeThemeId == object) {
+                //console.log(themeCard);
+                const applyButton = themeCard.querySelector(".card-apply");
+                //console.log(applyButton);
+                if (applyButton) {
+                    applyButton.textContent = "✓";
+                    applyButton.style.backgroundColor = "green";
+                }
+            };
+        }
+    });
 };
 loopThemeList();
 
